@@ -1,40 +1,70 @@
-<header>
-    <h1><%=gear_item["name"]%></h1>
+<header class="page_header">
+    <h1><%= gear_item["name"] %></h1>
 </header> 
 
 <div class="details_gear_item">
 
     <div class="details_image">
-        <img class="grid_display" src="<%= gear_item["image_url"] %>" alt="<%= gear_item["name"] %>">
-
+        <img class="detailed_view_image" src="<%= gear_item["image_url"] %>" alt="<%= gear_item["name"] %>">
     </div>
 
     <div class="details_text"> 
-        <h2 class="item_name"> <%= gear_item["name"] %></h2>
-        <h5 class="owner">About me: <%= gear_item["item_description"] %></h5>
-        <h5 class="owner">Owned By <%= gear_item["owner_id"] %></h5>
-        <h5 class="owner">Last used at: <%= gear_item["last_used_location"] %></h5>
-        <h5 class="owner">Purchased at <%= gear_item["purchase_location"] %></h5>
+        
+        <h3 class="owner">About: </h3>
+        <h2><%= gear_item["item_description"] %></h2>
+
+        <h3 class="owner">Owned By:</h3>
+        <h2 class="owner_name"><%= owners[gear_item["owner_id"].to_i-1]["username"] %></h2>
+        
+
+        <h3 class="owner">Last used at: </h3>
+        <h2><%= gear_item["last_used_location"] %></h2>
+        <h3 class="owner">Purchased at </h3>
+        <h2><%= gear_item["purchase_location"] %></h2>
+    </div>
+                
+</div>
+
+<%# If user is logged in and the session user ID = the owner user ID, then they can delete and edit the page %>
+
+<% if logged_in? && gear_item["owner_id"] == session[:user_id]%>
+
+    <div class="owner_modifications_container">
+        <form action="/gear_items" method="post">
+            <input type="hidden" name="item_id" value="<%= gear_item["item_id"] %>">
+            <input type="hidden" name="_method" value="delete">
+            <button>Delete</button>
+        </form>
+
+        <form action="/gear_item/<%= gear_item["item_id"] %>/edit" method="get">
+            <input type="hidden" name="item_id" value="<%= gear_item["item_id"] %>">
+            <button>EDIT</button>
+        </form>
+
     </div>
 
-</div>
+<% end %>
+
+<header class="page_header">
+    <h2>Comments</h2>
+</header> 
 
 <%# Displays Comments that belong to this gear item %>
 <div class="comments_container">
 
-    <%gear_item_comments.each do |gear_item_comment|%>
+    <% gear_item_comments.each do |gear_item_comment| %>
 
         <div class="comment_block">
-            <img src="#" alt="Posted by user - avatar">
-            <p> <%=gear_item_comment["content"]%> </p>
-            <p> <%=gear_item_comment["owner_id"]%> </p>
+            <h3> <%= gear_item_comment["content"] %> </h3>
+            <p> <%# owners[gear_item_comments["owner_id"].to_i-1]["username"] %> </p>
+            <img src="<%# owners[gear_item_comments["owner_id"].to_i-1]["avatar_url"] %>">
 
             <%# If the user that is logged in is the owner of the comment, give them the option to delete/edit the comment %>
             <% if gear_item_comment["owner_id"] == session[:user_id]%>
                 <form action="/comments" method="post">
                     <input type="hidden" name="_method" value="delete">
-                    <input type="hidden" name="comment_id" value="<%=gear_item_comment["comment_id"]%>">
-                    <input name="gear_item_id" type="hidden" value="<%=gear_item["item_id"]%>">
+                    <input type="hidden" name="comment_id" value="<%= gear_item_comment["comment_id"] %>">
+                    <input name="gear_item_id" type="hidden" value="<%= gear_item["item_id"] %>">
                     <button>DELETE</button>
                 </form>
 
@@ -45,13 +75,15 @@
     <%end%>
 
 
-    <div class="new_comment_input">
+    <div class="new_comment_input_block">
 
-        <form action="/comments/new" method="post">
+        <form class="comment_input" action="/comments/new" method="post">
             <input name="gear_item_id" type="hidden" value="<%=gear_item["item_id"]%>">
 
-            <label for="">Leave a comment </label>
-            <input name="comment_content" type="text">
+            <div class="form_line">
+                <label for=""><h3>Leave a comment:</h3> </label>
+                <input name="comment_content" type="text">
+            </div>
 
             <button>COMMENT</button>
         </form>
@@ -61,20 +93,6 @@
 </div>
 
 
-<%# If user is logged in and the session user ID = the owner user ID, then they can delete and edit the page %>
-<div class="owner_modifications_container">
-    <% if logged_in? && gear_item["owner_id"] == session[:user_id]%>
-        <p><%=gear_item["owner_id"]%></p>
-        <p><%=session[:user_id]%></p>
-        <form action="/gear_items" method="post">
-        <input type="hidden" name="item_id" value="<%= gear_item["item_id"] %>">
-        <input type="hidden" name="_method" value="delete">
-        <button>Delete</button>
-    </form>
 
-        <a href="/gear_item/<%= gear_item["item_id"] %>/edit">EDIT</a>
-
-    <% end %>
-</div>
 
 

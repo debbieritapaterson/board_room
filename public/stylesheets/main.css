@@ -12,7 +12,6 @@ body {
 
 header {
     font-family: 'Bebas Neue', cursive;
-
 }
 
 .site_header {
@@ -37,6 +36,19 @@ header {
     min-height: 100px;
    
 }
+
+@media (max-width: 600px) {
+    .header_core {
+        grid-template-columns: 1fr;
+    }
+
+    .header_core {
+        grid-template-rows: repeat(3, 1fr);    
+    }
+
+}
+
+
 
 .nav_bar {
     display: grid;
@@ -91,14 +103,24 @@ button {
 
 }
 
+.form_body {
+    background-color: white;
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
 form {
 
-    display: inline;
+}
+
+.form_line{
+    display: block;
 }
 
 /* USER INFO */
 .user_status {
-   
+   padding: 10px 10px;
 }
 
 .logged_in {
@@ -115,6 +137,7 @@ form {
     grid-gap: 10%;
     background-color: white;
     border-radius: 5px;
+
 }
 
 .user_avatar {
@@ -122,21 +145,36 @@ form {
 }
 
 .logout {
-    text-align: right;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .current_user {
+        height: 100%;   
+    }
+
+    .user_avatar {
+        width: 50%;
+    }
+
 }
 
 
 
 /* STANDARD COMPONENTS */
 
-form {
+/* form {
 
     display: grid;
     grid-template-columns: 1fr 2fr;
 
     
-}
+} */
 
+input {
+    padding: 10px;
+    width: 100%;
+}
 
 /* SIGN UP PAGE */
 
@@ -163,6 +201,12 @@ padding: 20px;
     grid-gap: 10px;
     font-family: 'Quicksand', sans-serif;
     color: black;
+}
+
+@media (max-width: 600px) {
+    .gear_items_index {
+        grid-template-columns: 1fr;
+    }
 }
 
 .gear_item {
@@ -222,35 +266,70 @@ h4 .owner {
 
 .details_gear_item {
     display: grid;
-    grid-template-columns: repeat (2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    margin: 50px 0px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .details_image {
-    max-width: 100%;
+   padding: 10px;
+   text-align: center;
 }
 
 .details_text {
- color: white;
+
+}
+
+.detailed_view_image{
+    max-width: 100%;
+    max-height: 300px;
 }
 
 .comments_container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+    margin: 50px 0px;
 
 }
 
 .comment_block{
-    background-color: powderblue;
-    border: 5px solid black;
-    height: 150px;
+    background-color: #C7D9C5;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: auto;
+    padding: 10px;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.new_comment_input {
-
-    background-color: red;
+.new_comment_input_block {
+    background-color: #C7D9C5;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: auto;
+    padding: 10px;
+    font-family: 'Quicksand', sans-serif;
 }
+
+/* button .new_comment_input_block {
+    text-align: left;
+} */
 
 .owner_modifications_container {
-    background-color: orchid;
+    
+    text-align: center;
+    margin: 50px 0px;
 
+}
+
+@media (max-width: 600px) {
+    .details_gear_item {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* EDIT PAGE  - ITEM EDIT DETAILS VIEW */

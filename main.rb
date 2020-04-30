@@ -124,11 +124,14 @@ end
 
 get '/gear_items/:item_id' do
 
+  owners = get_all_users()
   gear_item = get_gear_by_id(params[:item_id])
   gear_item_comments = get_all_gear_item_comments(params[:item_id])
 
+
   erb(:show, locals: 
-    {gear_item: gear_item,
+    {owners: owners,
+    gear_item: gear_item,
     gear_item_comments: gear_item_comments
     })
 
