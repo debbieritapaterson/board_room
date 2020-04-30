@@ -1,0 +1,32 @@
+"HELLO! <%gear_item["name"]%>"
+
+<div class="edit_item_body">
+
+    <h2>Edit gear in my board room</h2>
+
+    <form action="/gear_items" method="post">
+
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="item_id" value="<%=gear_item["item_id"]%>">
+
+
+        <label for="">Name </label>
+        <input name="name" type="text" value="<%=gear_item["name"]%>">
+        
+        <label for="">Description </label>
+        <input name="item_description" type="text" value="<%=gear_item["item_description"]%>">
+
+         <label for="">Post an image of it </label>
+        <input name="image_url" type="text" value="<%=gear_item["image_url"]%>">
+
+         <label for="">Where did you get it? </label>
+        <input name="purchase_location" type="text" value="<%=gear_item["purchase_location"]%>">
+
+         <label for="">Where did you last use it? </label>
+        <input name="last_used_location" type="text" value="<%=gear_item["last_used_location"]%>">
+
+        <button>UPDATE MY GEAR</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #BBFFB5;
+    font-size: 12px;
+
+}
+
+header {
+    font-family: 'Bebas Neue', cursive;
+
+}
+
+.site_header {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    color: #3B8034;
+    margin: 0px 0px 50px 0px;
+    border-radius: 5px;
+    
+    
+}
+
+.header_core {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    text-align: left;
+    width: 100%;
+    background-image: url(/images/title-banner.png);
+    background-size: 610px 180px;
+    max-height: 150px;
+    min-height: 100px;
+   
+}
+
+.nav_bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: auto;
+    padding: 20px;
+    background-color: black;
+}
+
+nav {
+    text-align: center;
+    height: auto;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+}
+
+/* @media (max-width: 600px){
+    nav {
+        display: inline-block;
+    }
+} */
+
+.site_title {
+
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 2em;
+}
+
+.page_header {
+    text-align: center;
+    margin: 0px 0px 50px 0px;
+}
+
+a {
+    width: 100%;
+    text-decoration: none;
+}
+
+nav a {
+ color: white;
+}
+
+button {
+    background-color:white;
+    color: grey;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100px;
+    border-color: #3B8034;
+    margin: 10px 10px;
+
+}
+
+form {
+
+    display: inline;
+}
+
+/* USER INFO */
+.user_status {
+   
+}
+
+.logged_in {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.current_user {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    text-align: right;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    grid-gap: 10%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.user_avatar {
+    width: 100%;
+}
+
+.logout {
+    text-align: right;
+}
+
+
+
+/* STANDARD COMPONENTS */
+
+form {
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    
+}
+
+
+/* SIGN UP PAGE */
+
+.signup_body {
+
+}
+
+
+/* LOGIN PAGE */
+
+.login_body {
+background-color: palegoldenrod;
+display: grid;
+justify-content: center;
+padding: 20px;
+}
+
+
+/* INDEX PAGE  - MAIN GRID VIEW */
+
+.gear_items_index {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+}
+
+.gear_item {
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px white;
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+
+}
+
+.item_details {
+    color: black;
+    padding: 10px;
+
+}
+
+.item_image {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.owner_details {
+    background-color: black;
+    width: 100%;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    font-size: 1em;
+}
+
+.owner_avatar{
+    max-width: 100%;
+    padding: 5px;
+}
+
+
+
+h2 .item_name {
+
+}
+
+h4 .owner {
+
+}
+
+/* ADD NEW VIEW */
+
+.new_item_body {
+
+}
+
+/* SHOW PAGE  - ITEM DETAILS VIEW */
+
+.details_gear_item {
+    display: grid;
+    grid-template-columns: repeat (2, 1fr);
+}
+
+.details_image {
+    max-width: 100%;
+}
+
+.details_text {
+ color: white;
+}
+
+.comments_container {
+
+}
+
+.comment_block{
+    background-color: powderblue;
+    border: 5px solid black;
+    height: 150px;
+}
+
+.new_comment_input {
+
+    background-color: red;
+}
+
+.owner_modifications_container {
+    background-color: orchid;
+
+}
+
+/* EDIT PAGE  - ITEM EDIT DETAILS VIEW */
+
+.edit_item_body {
+
+}
+
+
+h1 {
+    margin: 0px;
+}
+
+
+
+
+

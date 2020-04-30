@@ -1,0 +1,31 @@
+<%# MY BOARD ROOM %>
+<header class="page_header">
+    <h1>My Board Room</h1>
+</header>   
+
+<div class="gear_items_index">
+    <%  user_gear_items.each do |gear_item| %>
+
+        <a href="/gear_items/<%= gear_item["item_id"] %>">
+            <div class="gear_item">
+
+                 <div class="item_details">
+                    <img class="item_image" src="<%= gear_item["image_url"] %>" alt="<%= gear_item["name"] %>">
+                    <h2 class="item_name"> <%= gear_item["name"] %></h2>
+                </div>
+
+                <div class="owner_details">
+                    <img class="owner_avatar" src="<%= owner["avatar_url"] %>" alt="<%= owner["username"] %>">
+                    <h4 class="owner_name"> Owned By: <br> <%= owner["username"] %></h4>
+                </div>
+
+            </div>
+        </a>
+
+    <%end%>
+</div>
+                
+
+               
+
+                

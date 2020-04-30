@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+   <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Comfortaa|Josefin+Sans|Lexend+Giga|Quicksand|Varela+Round&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/main.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+  <header class="site_header">
+
+    <div class="header_core">
+
+        <div class="site_title">
+          <h1>The Board Room</h1>
+        </div>
+
+        <%# Only displays current user if there is a user logged in %>
+              
+        <div class="user_status">
+            <% if logged_in? %>
+
+            <div class="logged_in">
+              <div class="current_user">
+                <%current_user = current_user()%>
+                <p>Logged in as: <%=current_user["username"]%></p>
+                <img class="user_avatar"src="<%=current_user["avatar_url"]%>">
+              </div>
+
+              <div class="logout">
+                <form action="/logout" method="post">
+                    <input type="hidden" name ="_method" value="delete">
+                    <button> LOGOUT </button>
+                </form>
+              </div>
+            </div>
+
+            <% else %>
+            <div class="signup_login">
+
+                <form action="/login" method="get">
+                    <button> LOGIN </button>
+                </form>
+
+                <form action="/signup" method="get">
+                    <button> SIGNUP </button>
+                </form>
+            </div>
+
+            <% end %>
+            
+        </div>  
+    </div>
+      
+
+    <div class="nav_bar">
+
+      <nav> <a href="/"> HOME </a> </nav>
+      <nav> <a href="/gear_items/my_board_room"> MY BOARD ROOM </a> </nav>
+      <nav> <a href="#"> MY WISH LIST </a> </nav>
+
+      <nav> <a href="/gear_items/new"> NEW </a> </nav>
+
+    </div>
+
+  </header>
+
+
+    <%= yield %>
+
+  </body>
+</html>

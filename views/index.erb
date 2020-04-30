@@ -1,0 +1,28 @@
+<header class="page_header">
+    <h1>New Gear</h1>
+</header>   
+
+
+<div class="gear_items_index">
+
+
+    <%  gear_items.each do |gear_item| %>
+
+        <a href="/gear_items/<%= gear_item["item_id"] %>">
+            <div class="gear_item">
+                <div class="item_details">
+                    <img class="item_image" src="<%= gear_item["image_url"] %>" alt="<%= gear_item["name"] %>">
+                    <h2 class="item_name"> <%= gear_item["name"] %></h2>
+                </div>
+
+                <div class="owner_details">
+                    <img class="owner_avatar" src="<%= owners[gear_item["owner_id"].to_i-1]["avatar_url"] %>" alt="<%= gear_item["name"] %>">
+                    <h4 class="owner_name"> Owned By: <br> <%= owners[gear_item["owner_id"].to_i-1]["username"] %></h4>
+                </div>
+
+            </div>
+        </a>
+
+    <%end%>
+
+</div>

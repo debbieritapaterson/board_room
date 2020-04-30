@@ -1,0 +1,39 @@
+<header>
+    <h1>Add gear to your board room</h1>
+</header> 
+
+<div class="new_item_body">
+
+    <form action="/gear_items" method="post">
+
+        <label for="">Name </label>
+        <input name="name" type="text">
+        
+        <label for="">Description </label>
+        <input name="item_description" type="text">
+
+         <label for="">Post an image of it </label>
+        <input name="image_url" type="text">
+
+         <label for="">Where did you get it? </label>
+        <input name="purchase_location" type="text">
+
+         <label for="">Where did you last use it? </label>
+        <input name="last_used_location" type="text">
+
+        <button>ADD TO MY BOARD ROOM</button>
+
+    </form>
+
+</div>
+
+
+<%# 
+item_id serial primary key,
+name text,
+item_description text,
+image_url text,
+purchase_location text,
+last_used_location text,
+owner_id INTEGER 
+%>
