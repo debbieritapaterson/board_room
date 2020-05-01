@@ -26,6 +26,8 @@ def current_user()
   return user
 end
 
+#SIGNUP FEATURE
+
 get '/signup' do
 
   erb(:signup)
@@ -39,6 +41,8 @@ post '/signup' do
   redirect '/'
 
 end 
+
+#LOGIN/LOGOUT FEATURE
 
 get '/login' do
 
@@ -72,6 +76,14 @@ post '/login' do
 end
 
 
+delete '/logout' do
+  session[:user_id] = nil;
+
+  redirect '/login'
+end
+
+#VIEW NEW/ALL GEAR FROM ALL USERS
+
 get '/' do
 
   gear_items = get_all_gear_items()
@@ -84,6 +96,8 @@ get '/' do
       })
 
 end
+
+#VIEW MY GEAR (MY BOARD ROOM)
 
 get '/gear_items/my_board_room' do
 
@@ -102,9 +116,19 @@ end
 
 get '/gear_items/new' do
 
-  erb(:new)
+  if logged_in?
+
+    erb(:new)
+
+  else
+
+    redirect "/login"
+        
+  end
 
 end
+
+#CREATE NEW GEAR ITEM
 
 post '/gear_items' do
 
@@ -121,6 +145,7 @@ post '/gear_items' do
   redirect "/gear_items/my_board_room"
 end
 
+#VIEW GEAR ITEM
 
 get '/gear_items/:item_id' do
 
@@ -137,6 +162,10 @@ get '/gear_items/:item_id' do
 
 end
 
+
+
+# EDIT/DELETE GEAR FEATURE
+
 get '/gear_item/:item_id/edit' do
 
   gear_item = get_gear_by_id(params[:item_id])
@@ -147,7 +176,6 @@ get '/gear_item/:item_id/edit' do
 
 end 
 
-
 patch '/gear_items' do
 
   update_gear_item(params[:name], params[:item_description], params[:image_url], params[:purchase_location], params[:last_used_location], params[:item_id])
@@ -156,20 +184,21 @@ patch '/gear_items' do
 end 
 
 
-post '/comments/new' do
-  
-  create_comment(params[:gear_item_id], params[:comment_content], session[:user_id])
-
-  redirect "/gear_items/#{params[:gear_item_id]}"
-
-end
-
-
 delete '/gear_items' do
 
   delete_gear_item(params[:item_id])
 
   redirect '/gear_items/my_board_room'
+
+end
+
+# COMMENTS FEATURE
+
+post '/comments/new' do
+  
+  create_comment(params[:gear_item_id], params[:comment_content], session[:user_id])
+
+  redirect "/gear_items/#{params[:gear_item_id]}"
 
 end
 
@@ -181,12 +210,33 @@ delete '/comments' do
 
 end
 
+# WISHLIST FEATURE
 
-delete '/logout' do
-  session[:user_id] = nil;
+get '/wishlist' do
 
-  redirect '/login'
+  if logged_in?
+  
+    erb(:wishlist_index)
+
+  else
+
+    redirect "/login"
+        
+  end
+
 end
+
+post '/wish/new' do
+
+  #need: item_id, session[:user_id], wishlist array in table
+  
+  #add gear item to current users wishlist array
+
+  #check if gear item is wishlisted (in in array) and change the icon colour
+
+
+end
+
 
 
 

@@ -16,7 +16,7 @@ create_user("jakob@home.com", "jakobwollner", "wollner", "https://avataaars.io/?
 create table gear_items (
     item_id serial primary key,
     name text,
-    item_description text,
+    item_description text, 
     image_url text,
     purchase_location text,
     last_used_location text,

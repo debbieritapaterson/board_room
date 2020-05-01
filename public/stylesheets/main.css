@@ -21,8 +21,7 @@ header {
     color: #3B8034;
     margin: 0px 0px 50px 0px;
     border-radius: 5px;
-    
-    
+
 }
 
 .header_core {
@@ -47,8 +46,6 @@ header {
     }
 
 }
-
-
 
 .nav_bar {
     display: grid;
@@ -76,6 +73,8 @@ nav {
     padding: 10px 20px;
     text-align: left;
     font-size: 2em;
+    color: black;
+    
 }
 
 .page_header {
@@ -103,20 +102,34 @@ button {
 
 }
 
-.form_body {
-    background-color: white;
-    padding: 20px;
-    font-family: 'Quicksand', sans-serif;
+/* WISHLIST  */
+
+.wishlist_icon {
+    height: 4em;
+    width: 4em;
+}
+
+.wishlist_button {
+    text-align: right;
+}
+
+
+/* Button with image inside */
+.image {
+    width: fit-content;
+    border: none;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 0px 10px 0px 0px;
+}
+
+.image :hover {
+    background-color: #BBFFB5;
+    border-radius: 10px;
 
 }
 
-form {
 
-}
-
-.form_line{
-    display: block;
-}
 
 /* USER INFO */
 .user_status {
@@ -131,17 +144,20 @@ form {
 .current_user {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    text-align: right;
+    justify-content: center;
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     grid-gap: 10%;
     background-color: white;
     border-radius: 5px;
+    padding: 0px 5px;
 
 }
 
 .user_avatar {
     width: 100%;
+    max-width: 50px;
+    margin: auto;
 }
 
 .logout {
@@ -171,15 +187,32 @@ form {
     
 } */
 
+.form_body {
+    background-color: white;
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+    border: 1px solid #C7D9C5;
+    border-radius: 5px;
+}
+
+.form_line{
+    display: block;
+}
+
 input {
     padding: 10px;
     width: 100%;
+    border: 1px solid #C7D9C5;
+    border-radius: 5px;
+    margin: 10px 0px;
 }
+
+
 
 /* SIGN UP PAGE */
 
 .signup_body {
-
+    
 }
 
 
@@ -246,12 +279,6 @@ padding: 20px;
     padding: 5px;
 }
 
-
-
-h2 .item_name {
-
-}
-
 h4 .owner {
 
 }
@@ -281,7 +308,7 @@ h4 .owner {
 }
 
 .details_text {
-
+    padding: 5px 0px;
 }
 
 .detailed_view_image{
@@ -343,6 +370,17 @@ h1 {
     margin: 0px;
 }
 
+h2 {
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+/* COMMENTS FEATURE */
+
+.comment_owner {
+    /* display: grid; */
+    /* grid-template-columns: repeat(4, 1fr); */
+}
 
 
 

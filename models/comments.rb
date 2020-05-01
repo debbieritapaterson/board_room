@@ -13,14 +13,26 @@ end
 
 def get_comment_by_comment_id(comment_id)
     
-    run_sql("select * from comments where comment_id = #{comment_id};")
+    run_sql("select * from comments where comment_id = #{comment_id};")[0]
 
 end
 
 def delete_comment(comment_id)
 
     # deletes content of comment and author/owner of comment
-    run_sql("update comments set content = 'I swear I saw a comment here. Maybe it is wearing an invisibility cloak. (Comment deleted)', owner_id = null where comment_id = #{comment_id};")
+    run_sql("update comments set content = 'I swear I saw a comment here. Maybe it is wearing an invisibility cloak. (Comment deleted)' where comment_id = #{comment_id};")
+
+end
+
+def get_comment_status(comment_id)
+
+    comment_deletion_status = get_comment_by_comment_id(comment_id)["deletion_status"]
+  
+        if comment_deletion_status == "f"
+          return true
+        else
+          return false
+        end
 
 end
 

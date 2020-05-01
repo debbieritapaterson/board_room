@@ -9,6 +9,10 @@
     </div>
 
     <div class="details_text"> 
+
+        <div class="wishlist_button">
+            <button class="image" action="/wish/new"> <img class="wishlist_icon" src="/images/wishlist.png"></button>
+        </div>
         
         <h3 class="owner">About: </h3>
         <h2><%= gear_item["item_description"] %></h2>
@@ -21,6 +25,7 @@
         <h2><%= gear_item["last_used_location"] %></h2>
         <h3 class="owner">Purchased at </h3>
         <h2><%= gear_item["purchase_location"] %></h2>
+
     </div>
                 
 </div>
@@ -56,11 +61,21 @@
 
         <div class="comment_block">
             <h3> <%= gear_item_comment["content"] %> </h3>
-            <p> <%# owners[gear_item_comments["owner_id"].to_i-1]["username"] %> </p>
-            <img src="<%# owners[gear_item_comments["owner_id"].to_i-1]["avatar_url"] %>">
+
+            <% if get_comment_status(gear_item_comment["comment_id"]) %>
+                <div class="comment_owner">
+                    <p> Posted by <%= owners[gear_item_comment["owner_id"].to_i-1]["username"] %> </p>
+                    <img class="user_avatar" src="<%= owners[gear_item_comment["owner_id"].to_i-1]["avatar_url"] %>">
+                    
+                </div>
+            <% else %>
+                <p>Comment Author Removed</p>
+            <% end %>
+
+
 
             <%# If the user that is logged in is the owner of the comment, give them the option to delete/edit the comment %>
-            <% if gear_item_comment["owner_id"] == session[:user_id]%>
+            <% if gear_item_comment["owner_id"] == session[:user_id] && get_comment_status(gear_item_comment["comment_id"])%>
                 <form action="/comments" method="post">
                     <input type="hidden" name="_method" value="delete">
                     <input type="hidden" name="comment_id" value="<%= gear_item_comment["comment_id"] %>">
@@ -74,21 +89,34 @@
 
     <%end%>
 
+    <% if logged_in? %>
 
-    <div class="new_comment_input_block">
+        <div class="new_comment_input_block">
+            
+            <form class="comment_input" action="/comments/new" method="post">
+                <input name="gear_item_id" type="hidden" value="<%=gear_item["item_id"]%>">
 
-        <form class="comment_input" action="/comments/new" method="post">
-            <input name="gear_item_id" type="hidden" value="<%=gear_item["item_id"]%>">
+                
+                    <div class="form_line">
+                        <label for=""><h3>Leave a comment:</h3> </label>
+                        <input name="comment_content" type="text">
+                    </div>
 
-            <div class="form_line">
-                <label for=""><h3>Leave a comment:</h3> </label>
-                <input name="comment_content" type="text">
-            </div>
+                <button>COMMENT</button>
+            </form>
+            
+        </div>
+    
+    <%else%>
 
-            <button>COMMENT</button>
-        </form>
-        
-    </div>
+        <div class="new_comment_input_block">
+
+            <p><span><a href="/login"> LOGIN </a></span>  to leave a comment.</p>
+
+        </div>
+    
+
+    <%end%>
 
 </div>
 
