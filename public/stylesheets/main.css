@@ -30,7 +30,7 @@ header {
     text-align: left;
     width: 100%;
     background-image: url(/images/title-banner.png);
-    background-size: 610px 180px;
+    background-size: cover;
     max-height: 150px;
     min-height: 100px;
    
