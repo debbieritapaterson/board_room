@@ -26,6 +26,8 @@ The app was built with a extreme sports enthusiast in mind - the core feature be
 
 Three SQL tables (users, gear_items and comments store the basic information in the postgres database) and employ the help of Sinatra web server gem to serve this information to the app. 
 
+Database and screenshot planning: https://whimsical.com/KnSG8oGnp1Qv2qW4qX1UnN
+
 ##Upcoming Features and Fixes:
 
 Fixes:
